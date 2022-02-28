@@ -1,2 +1,10 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% pool_sample = [] %>
+<% @pools.each do |pool| %>
+    <% pool_sample << pool.name %>
+<% end %>
+
+<p class="pool"> <%= pool_sample.sample(5)%></p>
+
