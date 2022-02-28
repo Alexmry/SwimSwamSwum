@@ -47,4 +47,23 @@ puts 'Creating 100 fake pools...'
   pool.save!
   puts "pool #{pool.id} saved"
 end
-puts 'Finished!'
+
+
+array_pools_id = []
+Pool.all.each do |pool|
+    array_pools_id << pool.id
+end
+
+
+puts 'Creating 100 bookings pools...'
+5.times do
+  booking = Booking.new(
+    confirmed: nil,
+    start_date: "2022-05-09",
+    end_date:  "2022-06-09",
+    user_id: array_users_id.sample,
+    pool_id: array_pools_id.sample
+  )
+  booking.save!
+  puts "booking #{booking.id} saved"
+end
