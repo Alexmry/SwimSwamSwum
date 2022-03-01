@@ -14,6 +14,12 @@
   color: #4A4A4A;
 }
 
+.btn-see-more-container {
+    text-align: center;
+margin-top: -16px;
+margin-bottom: 64px;
+}
+
 .btn-see-more {
   color: white;
   border: 1px solid #4A4A4A;
@@ -23,8 +29,11 @@
   opacity: 0.9;
   transition: opacity 0.3s ease;
   background-color: #0F60C4;
-  margin:0 auto;
-//   display:block;
+//   margin-left: 6px auto;
+//   display: grid;
+//   padding: 8px 24px;
+//   display: flex;
+//   justify-content: center;
 }
 
 .btn-see-more:hover {
