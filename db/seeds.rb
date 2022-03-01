@@ -40,7 +40,7 @@ puts 'Creating 100 fake pools...'
   pool = Pool.new(
     name:    Faker::Company.name,
     address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
-    size:  ['small', 'mdeium', 'large'].sample, 
+    size:  ['small', 'medium', 'large'].sample, 
     price: rand(0..100),
     user_id: array_users_id.sample
   )
