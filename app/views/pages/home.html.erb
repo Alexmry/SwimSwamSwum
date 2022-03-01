@@ -2,7 +2,7 @@
   <div class="container">
     <h1>SwimSwamSwum brings <strong>pools</strong> to <strong>fun people</strong>!</h1>
     <p>Change your afternoon and rent a pool with your friends.</p>
-    <%= link_to "Start now", "#", class: "btn btn-ghost" %>
+    <%= link_to "Start now", pools_path, class: "btn btn-ghost" %>
   </div>
 </div>
 
@@ -34,6 +34,7 @@
         </div>
         </div>
     <% end %>
+    <%= link_to "See more", pools_path, class: "btn btn-see-more" %>
 </div>
 
 
