@@ -1,5 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1543489822-c49534f3271f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80);">
+  <div class="container">
+    <h1>SwimSwamSwum brings <strong>pools</strong> to <strong>fun people</strong>!</h1>
+    <p>Change your afternoon and rent a pool with your friends.</p>
+    <%= link_to "Start now", "#", class: "btn btn-ghost" %>
+  </div>
+</div>
 
 <% pool_sample = [] %>
 <% @pools.each do |pool| %>
