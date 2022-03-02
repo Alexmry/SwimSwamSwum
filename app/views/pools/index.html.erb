@@ -1,15 +1,17 @@
 <div class="card-container">
     <% @pools.sample(30).each do |pool| %>
+            <%= link_to pool_path(pool), class:"text-decoration-none" do %>
         <div class="card-pool">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-        <div class="card-pool-infos">
-            <div>
-            <h2><%= pool.name %></h2>
-            <p>Short description here!</p>
-            </div>
-            <h2 class="card-pool-pricing">£<%= pool.price %></h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pool-user avatar-bordered" />
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                <div class="card-pool-infos">
+                    <div>
+                    <h2><%= pool.name %></h2>
+                    <p>Short description here!</p>
+                    </div>
+                    <h2 class="card-pool-pricing">£<%= pool.price %></h2>
+                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pool-user avatar-bordered" />
+                </div>
         </div>
-        </div>
+            <% end %>
     <% end %>
 </div>

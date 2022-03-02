@@ -4,5 +4,9 @@ class PoolsController < ApplicationController
     @pools = Pool.all
  end
 
+ def show
+   @pool = Pool.find(params[:id])
+ end
+
 
 end
