@@ -12,11 +12,6 @@
 
 
 
-<% @pools.sample(5).each do |pool| %>
-    <%= pool.name %>
-    <%= pool.size %>
-    
-<% end %>
 
 <p>hello</p>
 
@@ -34,8 +29,8 @@
         </div>
         </div>
     <% end %>
-
 </div>
+
 <div class="btn-see-more-container">
     <%= link_to "See more", pools_path, class: "btn btn-see-more" %>
 </div>
