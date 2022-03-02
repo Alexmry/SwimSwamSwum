@@ -22,6 +22,22 @@ class PoolsController < ApplicationController
    end
  end
 
+  def edit
+    @pool = Pool.find(params[:id])
+  end
+
+  def update
+    @pool = Pool.find(params[:id])
+    @pool.update(pool_params)
+    redirect_to @pool, notice: "Pool updated! :)"
+  end
+
+  def destroy
+    @pool = Pool.find(params[:id])
+    @pool.destroy
+    redirect_to pools_path
+  end
+
  private
 
  def pool_params
