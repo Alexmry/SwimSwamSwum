@@ -24,6 +24,7 @@ class PoolsController < ApplicationController
 
   def edit
     @pool = Pool.find(params[:id])
+   #  raise
   end
 
   def update
