@@ -1,5 +1,6 @@
 <br>
 <br>
+<%= link_to "Add a new pool", new_pool_path, class: "btn btn-flat" %>
 <div class="card-container">
     <% @pools.sample(30).each do |pool| %>
         <%= link_to pool_path(pool), class:"text-decoration-none" do %>

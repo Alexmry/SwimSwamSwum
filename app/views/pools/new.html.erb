@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h2 class="">Add a New Car:</h2>
+      <%= simple_form_for(@pool) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :price %>
+        <%= f.input :size %>
+        <%= f.input :description %>
+        <%# <%= f.input :photos, as: :file, input_html: {multiple: true} %>
+        <%= f.submit class: 'btn btn-info-car' %>
+      <% end %>
+    </div>
+  </div>
+</div>
