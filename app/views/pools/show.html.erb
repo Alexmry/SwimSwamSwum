@@ -4,7 +4,13 @@
 <div class="card-container">
     
     <div class="card-pool">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        
+        <% if @pool.photo.attached?  %>
+            <%= cl_image_tag @pool.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <% end %>
+
         <div class="card-pool-infos">
             <div>
                 <h2><%= @pool.name %></h2>
