@@ -41,7 +41,7 @@ User.all.each do |user|
 end
 
 puts 'Creating 100 fake pools...'
-5.times do
+20.times do
   pool = Pool.new(
     name:    Faker::Company.name,
     address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
