@@ -6,6 +6,7 @@ class PoolsController < ApplicationController
 
  def show
    @pool = Pool.find(params[:id])
+   @booking = Booking.new
  end
 
  def new
