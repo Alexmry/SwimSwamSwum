@@ -4,12 +4,16 @@ class BookingsController < ApplicationController
         @bookings = current_user.bookings
     end
 
-    def new
-        @booking = Booking.new
-    end
+
 
     def create 
-        @booking = Booking.new(booking_params) 
+        @booking = Booking.new(booking_params)
+        @pool = Pool.find(params[:pool_id])
+        @booking.pool = @pool
+        @booking.user = current_user
+        if @booking.save!
+            redirect_to bookings_path , notice: "Made a new booking! :)"
+        end
     end
 
     private
