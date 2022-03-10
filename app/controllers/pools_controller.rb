@@ -4,6 +4,10 @@ class PoolsController < ApplicationController
     @pools = Pool.all
  end
 
+ def my_pools
+    @pools = Pool.where(user_id: current_user.id)
+ end
+
  def show
    @pool = Pool.find(params[:id])
    @booking = Booking.new

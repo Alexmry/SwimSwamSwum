@@ -4,8 +4,6 @@ class BookingsController < ApplicationController
         @bookings = current_user.bookings
     end
 
-
-
     def create 
         @booking = Booking.new(booking_params)
         @pool = Pool.find(params[:pool_id])
