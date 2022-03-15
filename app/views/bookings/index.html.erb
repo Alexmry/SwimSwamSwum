@@ -19,6 +19,7 @@
 
 <div class="tab-content">
   <div class="tab-pane active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+
     <div class="card-container">
         <% @bookings.each do |booking| %>
             <%= link_to pool_path(booking.pool), class:"text-decoration-none" do %>
@@ -42,9 +43,34 @@
             <% end %>
         <% end %>
     </div>
+
   </div>
 
-  <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab">BI</div>
+  <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab"> 
+        <div class="card-container">
+            <% @bookings.each do |booking| %>
+                <%= link_to pool_path(booking.pool), class:"text-decoration-none" do %>
+                    <div class="card-pool">
+                        <%= link_to "", booking_path(booking), method: :delete, data: { confirm: "U-sure?" }, class:'btn btn-close' %>
+                        <% if booking.pool.photo.attached?  %>
+                        <%= cl_image_tag booking.pool.photo.key, height: 300, width: 400, crop: :fill %>
+                        <% else %>
+                            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                        <% end %>
+
+                        <div class="card-pool-infos">
+                            <div>
+                            <h2><%= booking.pool.name %></h2>
+                            <p>Short description here!</p>
+                            </div>
+                            <h2 class="card-pool-pricing">£<%= booking.pool.price %></h2>
+                            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pool-user avatar-bordered" />
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+  </div>
 
   <div class="tab-pane" id="request" role="tabpanel" aria-labelledby="request-tab">booom</div>
 
