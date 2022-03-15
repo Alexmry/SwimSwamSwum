@@ -2,6 +2,19 @@ class BookingsController < ApplicationController
 
     def index
         @bookings = current_user.bookings
+
+
+        @pools_bookings = Booking.all.select do |booking|
+            booking.pool.user == current_user
+        end
+
+        @accepted_bookings = current_user.bookings.select do |booking|
+            booking.confirmed == true
+        end
+
+        @pending_bookings = current_user.bookings.select do |booking|
+            booking.confirmed == false
+        end
     end
 
     def create 
