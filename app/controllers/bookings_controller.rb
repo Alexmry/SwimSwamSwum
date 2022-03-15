@@ -14,6 +14,16 @@ class BookingsController < ApplicationController
         end
     end
 
+    def update
+        @booking_request = Booking.find(params[:id])
+        @booking_request.confirmed = true
+        @booking_request.save
+        @pool_bookings = Booking.all.select do |booking|
+            booking.friend.user == current_user && booking.approved = false
+        end
+        redirect_to bookings_path
+    end
+
     def destroy
         @booking = Booking.find(params[:id])
         @booking.destroy
