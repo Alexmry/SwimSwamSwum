@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
         end
 
         @accepted_bookings = current_user.bookings.select do |booking|
-            booking.confirmed == true
+            booking.confirmed == true #method not working yet
         end
 
         @pending_bookings = current_user.bookings.select do |booking|
