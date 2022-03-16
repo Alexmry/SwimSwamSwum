@@ -9,12 +9,14 @@ class BookingsController < ApplicationController
         end
 
         @accepted_bookings = current_user.bookings.select do |booking|
-            booking.confirmed == true #method not working yet
+            booking.confirmed == true #method not working yet => it works, just forgot to save in the console (jonas_booking.save)
         end
+        
 
         @pending_bookings = current_user.bookings.select do |booking|
             booking.confirmed == false
         end
+        raise
     end
 
     def create 
