@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
 
 
         @pools_bookings = Booking.all.select do |booking|
-            booking.pool.user == current_user
+            booking.pool.user == current_user && booking.confirmed == nil
         end
 
         @accepted_bookings = current_user.bookings.select do |booking|
@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
         @pending_bookings = current_user.bookings.select do |booking|
             booking.confirmed == false
         end
-        raise
     end
 
     def create 
@@ -24,7 +23,7 @@ class BookingsController < ApplicationController
         @pool = Pool.find(params[:pool_id])
         @booking.pool = @pool
         @booking.user = current_user
-        @booking.confirmed = false
+        @booking.confirmed = nil
         if @booking.save!
             redirect_to bookings_path , notice: "Made a new booking! We will let you know if the owner accepts :)"
         end
@@ -35,7 +34,7 @@ class BookingsController < ApplicationController
         @booking_request.confirmed = true
         @booking_request.save
         @pool_bookings = Booking.all.select do |booking|
-            booking.friend.user == current_user && booking.confirmed = false
+            booking.pool.user == current_user && booking.confirmed = false
         end
         redirect_to bookings_path
     end
