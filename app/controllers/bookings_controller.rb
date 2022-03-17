@@ -16,6 +16,8 @@ class BookingsController < ApplicationController
         @pending_bookings = current_user.bookings.select do |booking|
             booking.confirmed == false
         end
+
+
     end
 
     def create 
