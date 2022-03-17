@@ -97,7 +97,7 @@
                                         <p> Date of Booking: <%= booking.start_date %> - <%= booking.end_date %></p>
                                         <%# try with hidden feild tag %>
                                         <%= link_to "Approve Request", booking_path(booking), method: :patch %>
-                                        <%= link_to "Reject Request", booking_path(booking), method: :patch %>
+                                        <%= link_to "Reject Request", booking_path(booking), method: :delete %>
                                     </div>
                               </div>
                               <h2 class="card-pool-pricing">£<%= booking.pool.price %></h2>
