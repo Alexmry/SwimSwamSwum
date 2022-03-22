@@ -116,7 +116,7 @@
 
     <div class="tab-pane" id="denied" role="tabpanel" aria-labelledby="denied-tab">
       <div class="card-container">
-          <% @denied_bookings.each do |booking| %>
+          <% @bookings.each do |booking| %>
               <%= link_to pool_path(booking.pool), class:"text-decoration-none" do %>
                   <div class="card-pool">
                       <%= link_to "", booking_path(booking), method: :delete, data: { confirm: "U-sure?" }, class:'btn btn-close' %>
