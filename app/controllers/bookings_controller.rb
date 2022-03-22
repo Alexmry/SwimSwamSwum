@@ -41,7 +41,7 @@ class BookingsController < ApplicationController
     def update
         @booking_request = Booking.find(params[:id])
         # @booking_request.confirmed = true
-        if params[:confirmed] == "true" #Hidden field tag exaplined
+        if params[:confirmed] == "true" #  <%= link_to "Reject Request", booking_path(booking, confirmed: false), method: :patch %>
             @booking_request.confirmed = true
         else
             @booking_request.confirmed = false
@@ -51,6 +51,8 @@ class BookingsController < ApplicationController
         #     booking.pool.user == current_user && booking.confirmed = false
         # end
         redirect_to bookings_path
+
+        raise
     end
 
     def destroy
