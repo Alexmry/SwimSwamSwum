@@ -40,7 +40,12 @@ class BookingsController < ApplicationController
 
     def update
         @booking_request = Booking.find(params[:id])
-        @booking_request.confirmed = true
+        # @booking_request.confirmed = true
+        if params[:confirmed] == "true" #Hidden field tag exaplined
+            @booking_request.confirmed = true
+        else
+            @booking_request.confirmed = false
+        end
         @booking_request.save
         # @pool_bookings = Booking.all.select do |booking|
         #     booking.pool.user == current_user && booking.confirmed = false

@@ -101,8 +101,11 @@
                                     <p> Requested by: <%= booking.user.name %> </p>
                                     <p> Date of Booking: <%= booking.start_date %> - <%= booking.end_date %></p>
                                     <%# try with hidden feild tag %>
-                                    <%= link_to "Approve Request", booking_path(booking), method: :patch %>
-                                    <%= link_to "Reject Request", booking_path(booking), method: :delete %>
+                                    <%= link_to "Approve Request", booking_path(booking, confirmed: true), method: :patch %>
+                                    <%= link_to "Reject Request", booking_path(booking, confirmed: false), method: :patch %>
+
+
+
                                 </div>
                             </div>
                             <h2 class="card-pool-pricing">£<%= booking.pool.price %></h2>
