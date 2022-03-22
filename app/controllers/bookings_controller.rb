@@ -11,6 +11,10 @@ class BookingsController < ApplicationController
         @accepted_bookings = current_user.bookings.select do |booking|
             booking.confirmed == true #method not working yet => it works, just forgot to save in the console (jonas_booking.save)
         end
+
+        @denied_booking = current_user.bookings.select do |booking|
+            booking.confirmed = false
+        end
         
 
         @pending_bookings = current_user.bookings.select do |booking|
