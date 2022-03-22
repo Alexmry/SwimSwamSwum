@@ -12,6 +12,11 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="request-tab" data-bs-toggle="tab" data-bs-target="#request" type="button" role="tab" aria-controls="request" aria-selected="false">Active Requests</button>
   </li>
+
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="denied-tab" data-bs-toggle="tab" data-bs-target="#denied" type="button" role="tab" aria-controls="denied" aria-selected="false">Denied bookings</button>
+  </li>
+
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Request history</button>
   </li>
@@ -75,41 +80,65 @@
 
 
 
-      <div class="tab-pane" id="request" role="tabpanel" aria-labelledby="request-tab">
-          <div class="card-container">
-              <% @pools_bookings.each do |booking| %>
-                  <%= link_to pool_path(booking.pool), class:"text-decoration-none" do %>
-                      <div class="card-pool">
-                          <%= link_to "", booking_path(booking), method: :delete, data: { confirm: "U-sure?" }, class:'btn btn-close' %>
-                          <% if booking.pool.photo.attached?  %>
-                          <%= cl_image_tag booking.pool.photo.key, height: 300, width: 400, crop: :fill %>
-                          <% else %>
-                              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                          <% end %>
+    <div class="tab-pane" id="request" role="tabpanel" aria-labelledby="request-tab">
+        <div class="card-container">
+            <% @pools_bookings.each do |booking| %>
+                <%= link_to pool_path(booking.pool), class:"text-decoration-none" do %>
+                    <div class="card-pool">
+                        <%= link_to "", booking_path(booking), method: :delete, data: { confirm: "U-sure?" }, class:'btn btn-close' %>
+                        <% if booking.pool.photo.attached?  %>
+                        <%= cl_image_tag booking.pool.photo.key, height: 300, width: 400, crop: :fill %>
+                        <% else %>
+                            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                        <% end %>
 
-                          <div class="card-pool-infos">
-                              <div>
-                                    <h2><%= booking.pool.name %></h2>
-                                    <p>Short description here! lala</p>
-                                    <p> Name: <%= booking.pool.name %> </p>
-                                    <div class="pool-info">
-                                        <p> Requested by: <%= booking.user.name %> </p>
-                                        <p> Date of Booking: <%= booking.start_date %> - <%= booking.end_date %></p>
-                                        <%# try with hidden feild tag %>
-                                        <%= link_to "Approve Request", booking_path(booking), method: :patch %>
-                                        <%= link_to "Reject Request", booking_path(booking), method: :delete %>
-                                    </div>
-                              </div>
-                              <h2 class="card-pool-pricing">£<%= booking.pool.price %></h2>
-                              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pool-user avatar-bordered" />
+                        <div class="card-pool-infos">
+                            <div>
+                                <h2><%= booking.pool.name %></h2>
+                                <p>Short description here! lala</p>
+                                <p> Name: <%= booking.pool.name %> </p>
+                                <div class="pool-info">
+                                    <p> Requested by: <%= booking.user.name %> </p>
+                                    <p> Date of Booking: <%= booking.start_date %> - <%= booking.end_date %></p>
+                                    <%# try with hidden feild tag %>
+                                    <%= link_to "Approve Request", booking_path(booking), method: :patch %>
+                                    <%= link_to "Reject Request", booking_path(booking), method: :delete %>
+                                </div>
+                            </div>
+                            <h2 class="card-pool-pricing">£<%= booking.pool.price %></h2>
+                            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pool-user avatar-bordered" />
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        </div> 
+    </div>  
+
+    <div class="tab-pane" id="denied" role="tabpanel" aria-labelledby="denied-tab">
+      <div class="card-container">
+          <% @denied_bookings.each do |booking| %>
+              <%= link_to pool_path(booking.pool), class:"text-decoration-none" do %>
+                  <div class="card-pool">
+                      <%= link_to "", booking_path(booking), method: :delete, data: { confirm: "U-sure?" }, class:'btn btn-close' %>
+                      <% if booking.pool.photo.attached?  %>
+                      <%= cl_image_tag booking.pool.photo.key, height: 300, width: 400, crop: :fill %>
+                      <% else %>
+                          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                      <% end %>
+
+                      <div class="card-pool-infos">
+                          <div>
+                          <h2><%= booking.pool.name %></h2>
+                          <p>Short description here!</p>
                           </div>
+                          <h2 class="card-pool-pricing">£<%= booking.pool.price %></h2>
+                          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pool-user avatar-bordered" />
                       </div>
-                  <% end %>
+                  </div>
               <% end %>
-          </div> 
-      </div>  
-
-
+          <% end %>
+      </div> 
+  </div>
 
   <div class="tab-pane" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <div class="card-container">

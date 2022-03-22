@@ -11,16 +11,17 @@ class BookingsController < ApplicationController
         @accepted_bookings = current_user.bookings.select do |booking|
             booking.confirmed == true #method not working yet => it works, just forgot to save in the console (jonas_booking.save)
         end
-
-        @denied_booking = current_user.bookings.select do |booking|
-            booking.confirmed = false
+        
+        @denied_bookings = current_user.bookings.select do |booking|
+            booking.confirmed == false
         end
         
-
+        
         @pending_bookings = current_user.bookings.select do |booking|
             booking.confirmed == nil
         end
-
+        
+        # raise
 
     end
 
@@ -33,15 +34,16 @@ class BookingsController < ApplicationController
         if @booking.save!
             redirect_to bookings_path , notice: "Made a new booking! We will let you know if the owner accepts :)"
         end
+
     end
 
     def update
         @booking_request = Booking.find(params[:id])
         @booking_request.confirmed = true
         @booking_request.save
-        @pool_bookings = Booking.all.select do |booking|
-            booking.pool.user == current_user && booking.confirmed = false
-        end
+        # @pool_bookings = Booking.all.select do |booking|
+        #     booking.pool.user == current_user && booking.confirmed = false
+        # end
         redirect_to bookings_path
     end
 
