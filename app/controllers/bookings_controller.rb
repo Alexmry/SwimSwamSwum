@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
         # end
         redirect_to bookings_path
 
-        raise
+        # raise
     end
 
     def destroy
