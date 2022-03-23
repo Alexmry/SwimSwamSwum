@@ -20,4 +20,23 @@ class Booking < ApplicationRecord
 #         # redirect_to booking_path(@booking.pool) , notice: "must be after the start date:)"
 #       end
 #   end
+
+  has_one :notification
+
+  after_create :create_notification
+
+
+  def mark_notifications_as_seen
+    comments = self.comments
+    comments.each do |comment|
+      comment.notification.update(seen: true)
+    end 
+  end
+
+  private
+
+  def create_notification
+    Notification.create(user: booking.user, booking: self)
+  end
+
 end
