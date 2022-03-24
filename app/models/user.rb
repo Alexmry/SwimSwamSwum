@@ -10,8 +10,14 @@ class User < ApplicationRecord
 
 
 
-  has_many :bookings_booking_notifications, through: :bookings, source: :booking_notifications
-  has_many :incoming_notifications, through: :bookings_booking_notifications, source: :notification
+  # has_many :bookings, through: :bookings, source: :booking_notifications
+  # has_many :nft_comments, through: :nfts, source: :comments
+  # has_many :incoming_notifications, through: :nft_comments, source: :notification
+  
+  # has_many :booking_requests, source: :bookings
+  # has_many :incoming_notifications, through: :booking_requests, source: :booking_notification
+
+  has_many :incoming_notifications, through: :bookings, source: :booking_notification
 
 
   # def mark_notications_as_seen_for_nft(booking_id)

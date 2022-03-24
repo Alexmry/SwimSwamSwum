@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
         end
         
         # raise
-        @bookings.mark_notifications_as_seen
+        # @bookings.mark_notifications_as_seen
     end
 
     def create 

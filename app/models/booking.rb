@@ -21,15 +21,15 @@ class Booking < ApplicationRecord
 #       end
 #   end
 
-  has_one :notification
+  has_one :booking_notification
 
   after_create :create_notification
 
 
   def mark_notifications_as_seen
-    comments = self.comments
-    comments.each do |comment|
-      comment.notification.update(seen: true)
+    bookings = self.bookings
+    bookings.each do |booking|
+      booking.notification.update(seen: true)
     end 
   end
 

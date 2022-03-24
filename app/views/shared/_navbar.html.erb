@@ -16,7 +16,7 @@
         <div class="dropdown" id="dropDownBell">
           <li class="nav-item active" type="button" id="bellDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-            <%= current_user %>
+              <%= current_user.incoming_notifications.unseen_notifications.count %>
             <i class="far fa-bell"></i>
           </li>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="bellDropdown">
