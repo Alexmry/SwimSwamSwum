@@ -23,6 +23,25 @@
 
 
 
+            <% current_user.incoming_notifications.unseen_notifications.each do |notif| %>
+
+              <li class="nav-item2">
+                <% booking = Booking.find(notif.booking_id) %>
+                <% user = User.find(booking.user_id) %>
+
+                <div class="notification">
+                  <div class="notification-content">
+                    <p><small><%= booking.created_at %> </small></p>
+                    <p><%= link_to "#{user.name} booked #{booking.pool.name}", bookings_path, style: "color: black" %></p>
+                  </div>
+                </div>
+
+
+              </li>
+              
+            <% end %>
+
+
 
           </div>
         </div>
