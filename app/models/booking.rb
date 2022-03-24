@@ -36,7 +36,8 @@ class Booking < ApplicationRecord
   private
 
   def create_notification
-    Notification.create(user: booking.user, booking: self)
+    @booking = self
+    BookingNotification.create(user: @booking.user, booking: self)
   end
 
 end
