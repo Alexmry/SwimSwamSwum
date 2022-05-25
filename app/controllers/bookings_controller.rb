@@ -7,10 +7,12 @@ class BookingsController < ApplicationController
 
         @pools_bookings = Booking.all.select do |booking|
             booking.pool.user == current_user && booking.confirmed == nil
+            # ok
         end
 
         @accepted_bookings = current_user.bookings.select do |booking|
             booking.confirmed == true #method not working yet => it works, just forgot to save in the console (jonas_booking.save)
+            # ok
         end
         
         @denied_bookings = current_user.bookings.select do |booking|
@@ -20,7 +22,9 @@ class BookingsController < ApplicationController
         
         @pending_bookings = current_user.bookings.select do |booking|
             booking.confirmed == nil
+            # ok
         end
+
         
         # raise
         # @bookings.mark_notifications_as_seen
