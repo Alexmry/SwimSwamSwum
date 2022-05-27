@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
         
         @denied_bookings = current_user.bookings.select do |booking|
             booking.confirmed == false
+            # ok
         end
         
         
@@ -28,6 +29,7 @@ class BookingsController < ApplicationController
         
         # raise
         # @bookings.mark_notifications_as_seen
+        #  @user = User.find(@booking.user_id)
     end
 
     def create 

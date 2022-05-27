@@ -6,7 +6,8 @@ class User < ApplicationRecord
   
   has_many :pools
   has_many :bookings
-
+  has_many :messages
+  
 
 
 
@@ -17,7 +18,7 @@ class User < ApplicationRecord
   # has_many :booking_requests, source: :bookings
   # has_many :incoming_notifications, through: :booking_requests, source: :booking_notification
 
-  has_many :incoming_notifications, through: :bookings, source: :booking_notification
+  has_many :incoming_notifications, through: :bookings, source: :booking_notification, dependent: :destroy
 
 
   # def mark_notications_as_seen_for_nft(booking_id)

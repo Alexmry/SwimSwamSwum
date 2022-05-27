@@ -21,7 +21,7 @@ class Booking < ApplicationRecord
 #       end
 #   end
 
-  has_one :booking_notification
+  has_one :booking_notification, dependent: :destroy
 
   after_create :create_notification
 
