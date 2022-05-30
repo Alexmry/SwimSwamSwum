@@ -1,7 +1,7 @@
 <div class="container chatroom">
   <h1>#<%= @chatroom.name %></h1>
 
-  <div class="messages">
+  <div class="messages" data-controller="">
     <% @chatroom.messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
